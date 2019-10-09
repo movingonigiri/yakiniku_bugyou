@@ -15,4 +15,4 @@
 ## 技術の選択
 - Bootstrap4
 - Type Script
-- WAP
+- PWA
