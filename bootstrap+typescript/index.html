@@ -3,39 +3,131 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>TypeScript HTML App</title>
+    <title>index</title>
     <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css" type="text/css" />
     <script src="app.js"></script>
+
 </head>
+<header>
+    <div class="container">
+        <h1>焼肉奉行</h1>
+        <ul class="nav justify-content-end">
+            <li class="nav-item"><a class="nav-link" href="colume.html">コラム的なもの</a></li>
+        </ul>
+    </div>
+</header>
 
 <!--本体-->
 <body>
-    <h1 class="text-primary">TypeScript HTML App</h1>
+    <div class="main">
+        <div class="container">
+            <div class="row">
 
-    <div class="container">
-        <div class="row">
-            <div slass="col-6">
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Eメールアドレス</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Eメールアドレス">
-                        <small class="text-muted">あなたのメールは他の誰とも共有しません。</small>
+                <!--左側のコンテナ「ここから」-->
+                <div class="col-6">
+                    <!--フォームの作成-->
+                    <form class="food">
+
+                        <!--肉の種類-->
+                        <div class="form-group">
+                            <label for="select1">
+                                肉の種類
+                            </label>
+                            <select class="select-meet form-control" id="select1">
+                                <option>牛肉</option>
+                                <option>鶏肉</option>
+                                <option>豚肉</option>
+                            </select>
+                        </div>
+
+                        <!--野菜の種類-->
+                        <div class="form-group">
+                            <label for="select2">
+                                野菜の種類
+                            </label>
+                            <select class="form-control" id="select2">
+                                <option>キャベツ</option>
+                                <option>トウモロコシ</option>
+                                <option>茄子</option>
+                                <option>玉ねぎ</option>
+                            </select>
+                        </div>
+
+                        <!--海鮮の種類-->
+                        <div class="form-group">
+                            <label form="select4">
+                                海鮮の種類
+                            </label>
+                            <select class="form-control" id="select3">
+                                <option>烏賊</option>
+                                <option>海老</option>
+                                <option>蟹</option>
+                            </select>
+                        </div>
+
+                        <!--その他の食べもの-->
+                        <div class="form-group">
+                            <label for="select3">
+                                その他
+                            </label>
+                            <select class="form-control" id="select3">
+                                <option>コーンバター</option>
+                                <option>あの美味なやつ</option>
+                                <option>アレ</option>
+                            </select>
+                        </div>
+
+
+                    </form>
+
+                    <div>
+                        <p>
+                            <img src="./img/tumami_tyu.png" width=270 height=170 alt="網の温度">
+                        </p>
+                        <div class="form-group">
+                            <label for="formControlRange">温度の調節</label>
+                            <input type="range" class="form-control-range" id="formControlRange">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">パスワード</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="パスワード">
-                    </div>
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">記憶する</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">送信する</button>
-                </form>
-            </div>
-            <div class="col-6">
-                <div id="content"></div>
+                    <!--左側のコンテナ「ここまで」-->
+                </div>
+
+                <!--右側のコンテナ「ここから」-->
+                <div class="col-6">
+
+
+
+                    <!--右側のコンテナ「ここまで」-->
+                </div>
+
+
             </div>
         </div>
     </div>
 </body>
 </html>
+<style type="text/css">
+    header {
+        color: #ffffff;
+        background-color: #d0af4c;
+    }
+
+
+    .main {
+        background-color: #e83929;
+    }
+
+    .food {
+        height: 600px;
+        width: 300px;
+        background-image: url('./img/tolay.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: left;
+        margin-top: 20px;
+    }
+
+    .form-group {
+        margin-top: 10%;
+    }
+</style>
