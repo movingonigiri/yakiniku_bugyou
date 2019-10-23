@@ -25,9 +25,11 @@
 </head>
 <header>
     <div class="container">
-        <a href="home.html"><img src="./images/logo.png" width=270 height=170 alt="LOGO"></a>
+        <a href="home.html"><img src="./images/logo.png" width="527" height="200" alt="LOGO"></a>
         <ul class="nav justify-content-end">
-            <li class="nav-item"><a class="nav-link" href="colume.html">コラム的なもの</a></li>
+            <div class="border-left border-right"><li class="nav-item"><a class="nav-link" href="colume.html">タイマー</a></li></div>
+            <div class="border-right"><li class="nav-item"><a class="nav-link" href="colume.html">ストップウォッチ</a></li></div>
+            <div class="border-right"><li class="nav-item"><a class="nav-link" href="colume.html">コラム的なもの</a></li></div>
         </ul>
     </div>
 </header>
@@ -39,7 +41,7 @@
             <div class="row">
 
                 <!--左側のコンテナ「ここから」-->
-                <div class="col-5">
+                <div class="col-lg-5">
                     <!--フォームの作成-->
                     <form class="food">
 
@@ -96,24 +98,37 @@
                             </select>
                         </div>
 
+                        <!--肉の厚み-->
+                        <div class="form-group">
+                            <label for="select5">
+                                肉の厚み
+                            </label>
+                            <select class="form-control" id="select5">
+                                <option>選択なし</option>
+                                <option>厚い</option>
+                                <option>普通</option>
+                                <option>薄い</option>
+                            </select>
+                        </div>
+
                         <!--ボタン-->
                         <input type="button" id="btn1" value="焼く" onclick="imageDraw();">
 
                     </form>
 
                     <div>
-                        <p>
-                            <img src="./images/tumami_tyu.png" width=270 height=170 alt="網の温度">
-                        </p>
+                        <div class="ml-4">
+                            <img src="./images/tumami_tyu.png" width=280 height=200 alt="網の温度">
+                        </div>
                     </div>
                     <!--左側のコンテナ「ここまで」-->
                 </div>
 
                 <!--右側のコンテナ「ここから」-->
-                <div class="col-7">
-
-                    <canvas id="cvs1" width="560" height="700"></canvas>
-
+                <div class="col-lg-7">
+                    <div class="mt-4 mb-4">
+                        <canvas id="cvs1" width="560" height="700"></canvas>
+                    </div>
                     <!--右側のコンテナ「ここまで」-->
                 </div>
 
@@ -131,16 +146,18 @@
 <style type="text/css">
     header {
         color: #ffffff;
-        background-color: #d0af4c;
+        background-color: #efca28;
+        border-bottom: solid 2px #ffffff;
     }
 
     footer {
         color: #ffffff;
         background-color: #d0af4c;
+        border-top: solid 2px #ffffff;
     }
 
     .main {
-        background-color: #e83929;
+        background-color: #a40101;
     }
 
     .food {
