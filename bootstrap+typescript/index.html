@@ -3,8 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>焼肉奉行 TIMER</title>
+    <title>焼肉奉行 | タイマー</title>
     <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="app.css" type="text/css" />
     <script src="app.js"></script>
     <script>
         function imageDraw() {
@@ -25,11 +26,13 @@
 </head>
 <header>
     <div class="container">
-        <a href="home.html"><img src="./images/logo.png" width="527" height="200" alt="LOGO"></a>
+        <div><a href="home.html"><img src="./images/logo.png" width="527" height="200" alt="LOGO"></a></div>
         <ul class="nav justify-content-end">
-            <div class="border-left border-right"><li class="nav-item"><a class="nav-link" href="colume.html">タイマー</a></li></div>
-            <div class="border-right"><li class="nav-item"><a class="nav-link" href="colume.html">ストップウォッチ</a></li></div>
-            <div class="border-right"><li class="nav-item"><a class="nav-link" href="colume.html">コラム的なもの</a></li></div>
+            <div class="border-left border-right"><li class="nav-item"><a class="nav-link text-white h4 text1 font-weight-bold" href="colume.html">ホーム</a></li></div>
+            <div class="border-left border-right"><li class="nav-item"><a class="nav-link text-white h4 text1 font-weight-bold" href="colume.html">タイマー</a></li></div>
+            <div class="border-left border-right"><li class="nav-item"><a class="nav-link text-white h4 text1 font-weight-bold" href="colume.html">ストップウォッチ</a></li></div>
+            <div class="border-left border-right"><li class="nav-item"><a class="nav-link text-white h4 text1 font-weight-bold" href="colume.html">コラム的なもの</a></li></div>
+            <div class="border-left border-right"><li class="nav-item"><a class="nav-link text-white h4 text1 font-weight-bold" href="colume.html">焼肉店</a></li></div>
         </ul>
     </div>
 </header>
@@ -43,10 +46,11 @@
                 <!--左側のコンテナ「ここから」-->
                 <div class="col-lg-5">
                     <!--フォームの作成-->
+                    <div class="mx-auto">
                     <form class="food">
 
                         <!--肉の種類-->
-                        <div class="form-group">
+                        <div class="form-group m-4">
                             <label for="select1">
                                 肉の種類
                             </label>
@@ -58,8 +62,21 @@
                             </select>
                         </div>
 
+                        <!--肉の厚み-->
+                        <div class="form-group m-4">
+                            <label for="select5">
+                                肉の厚み
+                            </label>
+                            <select class="form-control" id="select5">
+                                <option>選択なし</option>
+                                <option>厚い</option>
+                                <option>普通</option>
+                                <option>薄い</option>
+                            </select>
+                        </div>
+
                         <!--野菜の種類-->
-                        <div class="form-group">
+                        <div class="form-group m-4">
                             <label for="select2">
                                 野菜の種類
                             </label>
@@ -73,7 +90,7 @@
                         </div>
 
                         <!--海鮮の種類-->
-                        <div class="form-group">
+                        <div class="form-group m-4">
                             <label form="select3">
                                 海鮮の種類
                             </label>
@@ -86,7 +103,7 @@
                         </div>
 
                         <!--その他の食べもの-->
-                        <div class="form-group">
+                        <div class="form-group m-4">
                             <label for="select4">
                                 その他
                             </label>
@@ -98,28 +115,17 @@
                             </select>
                         </div>
 
-                        <!--肉の厚み-->
-                        <div class="form-group">
-                            <label for="select5">
-                                肉の厚み
-                            </label>
-                            <select class="form-control" id="select5">
-                                <option>選択なし</option>
-                                <option>厚い</option>
-                                <option>普通</option>
-                                <option>薄い</option>
-                            </select>
-                        </div>
-
                         <!--ボタン-->
-                        <input type="button" id="btn1" value="焼く" onclick="imageDraw();">
-
+                        <div class="float-right mr-4">
+                            <input type="button" id="btn1" value="焼く" onclick="imageDraw();">
+                        </div>
                     </form>
 
                     <div>
                         <div class="ml-4">
                             <img src="./images/tumami_tyu.png" width=280 height=200 alt="網の温度">
                         </div>
+                    </div>
                     </div>
                     <!--左側のコンテナ「ここまで」-->
                 </div>
@@ -140,45 +146,8 @@
 
 <!--ここからフッター-->
 <footer>
-    <p>&copy;YAKINIKUBUGYO</p>
+    <div class="clearfix">
+        <div class="float-right">&copy;YAKINIKUBUGYO</div>
+    </div>
 </footer>
 </html>
-<style type="text/css">
-    header {
-        color: #ffffff;
-        background-color: #efca28;
-        border-bottom: solid 2px #ffffff;
-    }
-
-    footer {
-        color: #ffffff;
-        background-color: #d0af4c;
-        border-top: solid 2px #ffffff;
-    }
-
-    .main {
-        background-color: #a40101;
-    }
-
-    .food {
-        height: auto;
-        width: 300px;
-        background-image: url('./images/tolay.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        float: left;
-        margin: 20px;
-    }
-
-    .form-group {
-        margin-top: 10%;
-    }
-
-    canvas {
-        background-color: #4e3131;
-        background-image: url('./images/ami.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        border: inset 20px #d4cfcf;
-    }
-</style>
