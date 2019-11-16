@@ -44,111 +44,105 @@
             <div class="row">
 
                 <!--左側のコンテナ「ここから」-->
-                <div class="col-lg-5">
-                    <!--フォームの作成-->
-                    <div class="mx-auto">
-                    <form class="food">
-
-                        <!--肉の種類-->
-                        <div class="form-group m-4">
-                            <label for="select1">
-                                肉の種類
-                            </label>
-                            <select class="select-meet form-control" id="select1">
-                                <option>選択なし</option>
-                                <option>牛肉</option>
-                                <option>鶏肉</option>
-                                <option>豚肉</option>
-                            </select>
-                        </div>
-
-                        <!--肉の厚み-->
-                        <div class="form-group m-4">
-                            <label for="select2">
-                                肉の厚み
-                            </label>
-                            <select class="form-control" id="select2">
-                                <option>選択なし</option>
-                                <option>厚い</option>
-                                <option>普通</option>
-                                <option>薄い</option>
-                            </select>
-                        </div>
-
-                        <!--野菜の種類-->
-                        <div class="form-group m-4">
-                            <label for="select3">
-                                野菜の種類
-                            </label>
-                            <select class="form-control" id="select3">
-                                <option>選択なし</option>
-                                <option>キャベツ</option>
-                                <option>トウモロコシ</option>
-                                <option>茄子</option>
-                                <option>玉ねぎ</option>
-                            </select>
-                        </div>
-
-                        <!--海鮮の種類-->
-                        <div class="form-group m-4">
-                            <label form="select4">
-                                海鮮の種類
-                            </label>
-                            <select class="form-control" id="select4">
-                                <option>選択なし</option>
-                                <option>烏賊</option>
-                                <option>海老</option>
-                                <option>蟹</option>
-                            </select>
-                        </div>
-
-                        <!--その他の食べもの-->
-                        <div class="form-group m-4">
-                            <label for="select5">
-                                その他
-                            </label>
-                            <select class="form-control" id="select5">
-                                <option>選択なし</option>
-                                <option>コーンバター</option>
-                                <option>あの美味なやつ</option>
-                                <option>アレ</option>
-                            </select>
-                        </div>
-
-                        <!--適当なプルダウン-->
-                        <div class="form-group m-4">
-                            <label for="select6">
-                                その他
-                            </label>
-                            <select class="form-control" id="select6">
-                                <option>選択なし</option>
-                                <option>あれ</option>
-                            </select>
-                        </div>
-
-                        <!--ボタン-->
-                        <div class="float-right mr-4">
-                            <input type="button" id="btn1" value="焼く" onclick="imageDraw();">
-                        </div>
-                    </form>
-
-                    <div>
-                        <div class="mb-4 ml-4">
-                            <img src="./images/tumami_tyu.png" width=280 height=200 alt="網の温度">
-                        </div>
-                    </div>
+                <div class="col-lg-7">
+                    <div class="mt-4 mb-4">
+                        <canvas id="cvs1" width="560" height="700"></canvas>
                     </div>
                     <!--左側のコンテナ「ここまで」-->
                 </div>
 
                 <!--右側のコンテナ「ここから」-->
-                <div class="col-lg-7">
-                    <div class="mt-4 mb-4">
-                        <canvas id="cvs1" width="560" height="700"></canvas>
+                <div class="col-lg-5">
+                    <!--フォームの作成-->
+                    <div class="mx-auto">
+                        <form class="food">
+
+                            <!--肉の種類-->
+                            <div class="form-group m-4">
+                                <label for="select1">
+                                    肉の種類
+                                </label>
+                                <select class="select-meet form-control" id="select1">
+                                    <option>選択なし</option>
+                                    <option>カルビ(牛)</option>
+                                    <option>牛サガリ(牛)</option>
+                                    <option>ホルモン(牛)</option>
+                                    <option>若鳥(鶏)</option>
+                                    <option>鶏せせり(鶏)</option>
+                                    <option>豚バラ(豚)</option>
+                                    <option>豚ハラミ(豚)</option>
+                                    <option>ホルモン(豚)</option>
+                                </select>
+                            </div>
+
+                            <!--肉の厚み-->
+                            <div class="form-group m-4">
+                                <label for="select2">
+                                    肉の厚み
+                                </label>
+                                <select class="form-control" id="select2">
+                                    <option>普通</option>
+                                    <option>厚い</option>
+                                    <option>薄い</option>
+                                </select>
+                            </div>
+
+                            <!--野菜の種類-->
+                            <div class="form-group m-4">
+                                <label for="select3">
+                                    野菜の種類
+                                </label>
+                                <select class="form-control" id="select3">
+                                    <option>選択なし</option>
+                                    <option>キャベツ</option>
+                                    <option>トウモロコシ</option>
+                                    <option>茄子</option>
+                                    <option>玉ねぎ</option>
+                                    <option>ピーマン</option>
+                                </select>
+                            </div>
+
+                            <!--海鮮の種類-->
+                            <div class="form-group m-4">
+                                <label form="select4">
+                                    海鮮の種類
+                                </label>
+                                <select class="form-control" id="select4">
+                                    <option>選択なし</option>
+                                    <option>イカ</option>
+                                    <option>エビ</option>
+                                    <option>ししゃも</option>
+                                    <option>カニ</option>
+                                </select>
+                            </div>
+
+                            <!--その他の食べもの-->
+                            <div class="form-group m-4">
+                                <label for="select5">
+                                    その他
+                                </label>
+                                <select class="form-control" id="select5">
+                                    <option>選択なし</option>
+                                    <option>コーンバターホイル焼き</option>
+                                    <option>ニンニクホイル焼き</option>
+                                    <option>アレ</option>
+                                </select>
+                            </div>
+
+                            <!--ボタン-->
+                            <div class="float-right mr-4">
+                                <input type="button" id="btn1" value="焼く" onclick="imageDraw();">
+                            </div>
+                        </form>
+
+                        <div>
+                            <div class="mb-4 ml-4">
+                                <img src="./images/tumami_tyu.png" width=280 height=200 alt="網の温度">
+                            </div>
+                        </div>
                     </div>
                     <!--右側のコンテナ「ここまで」-->
                 </div>
-
 
             </div>
         </div>
