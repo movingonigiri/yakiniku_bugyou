@@ -19,7 +19,7 @@
 
             //画像をcanvasに設定
             img.onload = function () {
-                ctx.drawImage(img, 0, 0, 400, 300);  //400x300に縮小表示
+                ctx.drawImage(img, 0, 0, 270, 190);  //400x300に縮小表示
             }
         }
     </script>
@@ -58,7 +58,7 @@
                         <form class="food">
 
                             <!--肉の種類-->
-                            <div class="form-group m-4">
+                            <div class="form-group m-4 choice">
                                 <label for="select1">
                                     肉の種類
                                 </label>
@@ -76,7 +76,7 @@
                             </div>
 
                             <!--肉の厚み-->
-                            <div class="form-group m-4">
+                            <div class="form-group m-4 dhoice">
                                 <label for="select2">
                                     肉の厚み
                                 </label>
@@ -88,7 +88,7 @@
                             </div>
 
                             <!--野菜の種類-->
-                            <div class="form-group m-4">
+                            <div class="form-group m-4 choice">
                                 <label for="select3">
                                     野菜の種類
                                 </label>
@@ -103,7 +103,7 @@
                             </div>
 
                             <!--海鮮の種類-->
-                            <div class="form-group m-4">
+                            <div class="form-group m-4 choice">
                                 <label form="select4">
                                     海鮮の種類
                                 </label>
@@ -117,7 +117,7 @@
                             </div>
 
                             <!--その他の食べもの-->
-                            <div class="form-group m-4">
+                            <div class="form-group m-4 choice">
                                 <label for="select5">
                                     その他
                                 </label>
@@ -125,12 +125,11 @@
                                     <option>選択なし</option>
                                     <option>コーンバターホイル焼き</option>
                                     <option>ニンニクホイル焼き</option>
-                                    <option>アレ</option>
                                 </select>
                             </div>
 
                             <!--ボタン-->
-                            <div class="float-right mr-4">
+                            <div class="float-right mr-4 mb-4">
                                 <input type="button" id="btn1" value="焼く" onclick="imageDraw();">
                             </div>
                         </form>
