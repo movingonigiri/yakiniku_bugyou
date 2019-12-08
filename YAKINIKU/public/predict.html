@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--WEBカメラから取得した画像を放り込む-->
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Video</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+        <script>
+            var wait = ms => new Promise((r, j)=>setTimeout(r, ms));
+            predict_niku = ["牛肉", "豚肉", "鶏肉"]
+            async function main() {
+                const model = await tf.loadLayersModel('./web_model/model.json');
+                document.getElementById('image_upload').onchange = function(ev) {
+                    var f = ev.target.files[0];
+                    var fr = new FileReader();
+
+                    var makePrediction = async function(img) {
+                        // We need to ensure that the image is actually loaded before we proceed.
+                        while(!img.complete) {
+                            await wait(100);
+                        }
+                        
+                        height = model.inputs[0].shape[1];
+                        width = model.inputs[0].shape[2];
+                        var tensor = tf.browser.fromPixels(img)
+                                       .resizeNearestNeighbor([width, height])
+                                       .toFloat().expandDims();
+                        
+                        tensor.print();
+                        console.log(tensor);
+                        
+                        const prediction = model.predict(tensor);
+                        console.log(prediction.dataSync());
+
+                        var data = prediction.dataSync();
+                        var max_predit_idx = getMaxId(data);
+                        document.getElementById('result').innerHTML = predict_niku[ max_predit_idx];
+                    }
+                    
+
+                    var fileReadComplete = function(ev2) {
+                        document.getElementById('image').src = ev2.target.result;
+                        var img = new Image();
+                        img.src = ev2.target.result;
+                        makePrediction(img);
+                    };
+                    fr.onload = fileReadComplete;
+                    fr.readAsDataURL(f);
+                }
+            }
+            main();
+            
+            // 配列から最大値を取得する
+            function getMaxId(arr) {
+                if (arr.length == 0) {
+                    return -1;
+                }
+                var maxId = 0;
+                for (var id = 1; id < arr.length; id++) {
+                    if (arr[id] > arr[maxId]) {
+                      maxId = id;
+                    }
+                }
+                return maxId;
+            }
+        </script>
+    </head>
+    <body>
+        <input id="image_upload" type="file">
+        <img id="image">
+        <div id="result"></div>
+    </body>
+</html>
