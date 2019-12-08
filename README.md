@@ -11,7 +11,7 @@
 - 大園裕矢
 - 片原諒大
 - MAXちゅん太
-
+- 末竹隆也
 ## 技術の選択
 - Bootstrap4
 - Type Script
