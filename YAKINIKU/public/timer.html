@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>焼肉奉行 | タイマー</title>
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="app.css" type="text/css" />
+    <script src="app.js"></script>
+    <script>
+        function imageDraw() {
+            //2Dコンテキストのオブジェクトを生成する
+            var cvs = document.getElementById('cvs1');
+            var ctx = cvs.getContext('2d');
+
+            //画像オブジェクトを生成
+            var img = new Image();
+            img.src = "./images/steak.png";
+
+            //画像をcanvasに設定
+            img.onload = function () {
+                ctx.drawImage(img, 0, 0, 400, 300);  //400x300に縮小表示
+            }
+        }
+    </script>
+</head>
+<header>
+    <div class="container">
+        <div><a href="home.html"><img src="./images/logo.png" width="527" height="200" alt="LOGO"></a></div>
+        <ul class="nav justify-content-end">
+            <div class="border-left border-right"><li class="nav-item"><a class="nav-link text-white h4 text1 font-weight-bold" href="colume.html">ホーム</a></li></div>
+            <div class="border-left border-right"><li class="nav-item"><a class="nav-link text-white h4 text1 font-weight-bold" href="colume.html">タイマー</a></li></div>
+            <div class="border-left border-right"><li class="nav-item"><a class="nav-link text-white h4 text1 font-weight-bold" href="colume.html">ストップウォッチ</a></li></div>
+            <div class="border-left border-right"><li class="nav-item"><a class="nav-link text-white h4 text1 font-weight-bold" href="colume.html">コラム的なもの</a></li></div>
+            <div class="border-left border-right"><li class="nav-item"><a class="nav-link text-white h4 text1 font-weight-bold" href="colume.html">焼肉店</a></li></div>
+        </ul>
+    </div>
+</header>
+
+<!--本体-->
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="row">
+
+                <!--左側のコンテナ「ここから」-->
+                <div class="col-lg-5">
+                    <!--フォームの作成-->
+                    <div class="mx-auto">
+                    <form class="food">
+
+                        <!--肉の種類-->
+                        <div class="form-group m-4">
+                            <label for="select1">
+                                肉の種類
+                            </label>
+                            <select class="select-meet form-control" id="select1">
+                                <option>選択なし</option>
+                                <option>牛肉</option>
+                                <option>鶏肉</option>
+                                <option>豚肉</option>
+                            </select>
+                        </div>
+
+                        <!--肉の厚み-->
+                        <div class="form-group m-4">
+                            <label for="select5">
+                                肉の厚み
+                            </label>
+                            <select class="form-control" id="select5">
+                                <option>選択なし</option>
+                                <option>厚い</option>
+                                <option>普通</option>
+                                <option>薄い</option>
+                            </select>
+                        </div>
+
+                        <!--野菜の種類-->
+                        <div class="form-group m-4">
+                            <label for="select2">
+                                野菜の種類
+                            </label>
+                            <select class="form-control" id="select2">
+                                <option>選択なし</option>
+                                <option>キャベツ</option>
+                                <option>トウモロコシ</option>
+                                <option>茄子</option>
+                                <option>玉ねぎ</option>
+                            </select>
+                        </div>
+
+                        <!--海鮮の種類-->
+                        <div class="form-group m-4">
+                            <label form="select3">
+                                海鮮の種類
+                            </label>
+                            <select class="form-control" id="select3">
+                                <option>選択なし</option>
+                                <option>烏賊</option>
+                                <option>海老</option>
+                                <option>蟹</option>
+                            </select>
+                        </div>
+
+                        <!--その他の食べもの-->
+                        <div class="form-group m-4">
+                            <label for="select4">
+                                その他
+                            </label>
+                            <select class="form-control" id="select4">
+                                <option>選択なし</option>
+                                <option>コーンバター</option>
+                                <option>あの美味なやつ</option>
+                                <option>アレ</option>
+                            </select>
+                        </div>
+
+                        <!--ボタン-->
+                        <div class="float-right mr-4">
+                            <input type="button" id="btn1" value="焼く" onclick="imageDraw();">
+                        </div>
+                    </form>
+
+                    <div>
+                        <div class="ml-4">
+                            <img src="./images/tumami_tyu.png" width=280 height=200 alt="網の温度">
+                        </div>
+                    </div>
+                    </div>
+                    <!--左側のコンテナ「ここまで」-->
+                </div>
+
+                <!--右側のコンテナ「ここから」-->
+                <div class="col-lg-7">
+                    <div class="mt-4 mb-4">
+                        <canvas id="cvs1" width="560" height="700"></canvas>
+                    </div>
+                    <!--右側のコンテナ「ここまで」-->
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<!--ここからフッター-->
+<footer>
+    <div class="clearfix">
+        <div class="float-right">&copy;YAKINIKUBUGYO</div>
+    </div>
+</footer>
+</html>
