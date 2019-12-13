@@ -71,8 +71,11 @@
                                     }
                                     
                                     // 出力先のx座標とy座標
-                                    Get_Point(){
-                                        return this.x_point, this.y_point;
+                                    Get_XPoint(){
+                                        return this.x_point;
+                                    }
+                                    Get_YPoint(){
+                                        return this.y_point;
                                     }
                                     
                                     // 選択タグから選んだ名前
@@ -105,46 +108,93 @@
                                 // ページロード時に実行
                                 window.onload=function () {
                                     csvToArray("yakiniku.csv");
+                                    
+                                    var canvas = document.getElementById('cvs1');
+                                    var ctx = canvas.getContext('2d');
+                                    
+                                    var image = new Image();
+                                    image.src = "./images/ami.png";
+                                    image.addEventListener('load', function() {
+                                        ctx.drawImage(image, 0, 0, 560, 700);
+                                    }, false);
                                 }
                                 
                                 // 選択タグを押した後「焼く」ボタンを押したとき実行する関数
                                 function imageDraw() {
                                     var value = document.getElementById('select1');
-                                    console.log(value.value);
-//                                    if(value.values != "選択なし"){
-                                        On_Plate[count] = new Yakiniku(value.value, 0, 0, csvData[value.value]["medium"]);
-                                                            
-                                    /* ------------ 画像生成　------------ */
-                                        var w = 200;
-                                        var h = 200;
-                                        var canvas = document.getElementById('cvs1');
-                                        var ctx = canvas.getContext('2d');
-                                        var img = new Image();
-                                        img.src = "./images/wakadori.png";
-                                        ctx.drawImage(img, On_Plate[count].x_point, On_Plate[count].y_point, w, h);
-//                                        ctx.font = "36px serif";
-//                                        ctx.strokeStyle = "Black";
-//                                        ctx.fillText(On_Plate[count].timer.toString(), 0, 0);
+                                    if(value.values != "選択なし"){
+                                        var xpoint = 0;
+                                        var ypoint = 0;
+                                        
+                                        On_Plate[count] = new Yakiniku(value.value, xpoint, ypoint, csvData[value.value]["medium"]);                     
 
-                                        count+=1;
-//                                    }
                                     /* ------------ 画像生成　------------ */
+                                        var w = 60;
+                                        var h = 60;
+                                        var canvas = document.getElementById('cvs1');
+                                        var ctx = canvas.getContext('2d');                                        
+                                        var image = new Image();
+                                        image.src = "./images/ami.png";
+                                        image.addEventListener('load', function() {
+                                            ctx.drawImage(image, 0, 0, 560, 700);
+                                            var img2 = new Image();
+                                            img2.src = "./images/wakadori.png";
+                                            img2.addEventListener('load', function() {
+                                                ctx.drawImage(img2, xpoint, ypoint, w, h);
+                                                ctx.font = "20px serif";                                        
+                                                ctx.fillText(csvData[value.value]["medium"], xpoint+w/2, ypoint+h/2);
+                                            }, false);
+                                        }, false);
+                                        
+                                    /* ------------ 画像生成　------------ */
+                                        
+                                        count+=1;
+                                    }
                                 }
                                 
                                 // 10s 毎に実行する関数
                                 var log = function(){
                                     idx = 0
-                                    // 普通のfor文に直す,エラー普及のために
-                                    On_Plate.forEach(function(Yakiniku_Object){
-                                       time = Yakiniku_Object.Advance_timer()
-                                       if(time<0){
-                                           count--;
-                                           On_Plate.splice(idx,1);
-                                       }else{
-                                           idx++;
-                                       }
+                                    
+                                    var w = 60;
+                                    var h = 60;
+                                    var canvas = document.getElementById('cvs1');
+                                    var ctx = canvas.getContext('2d');                                        
+                                    var image = new Image();
+                                    image.src = "./images/ami.png";
+                                    image.addEventListener('load', function() {
+                                        ctx.clearRect(0, 0, 560, 700);
+                                        ctx.drawImage(image, 0, 0, 560, 700);
                                         
-                                    }); 
+                                            // 普通のfor文に直す,エラー普及のために
+                                            On_Plate.forEach(function(Yakiniku_Object){
+                                               time = Yakiniku_Object.Advance_timer()
+                                               if(time<0){
+                                                   count--;
+                                                   On_Plate.splice(idx,1);
+                                               }else{
+                                                   idx++;
+                                               }
+                                                var img2 = new Image();
+                                                img2.src = "./images/wakadori.png";
+                                                img2.addEventListener('load', function() {
+                                                    ctx.drawImage(img2, Yakiniku_Object.x_point, Yakiniku_Object.y_point, w, h);
+                                                    
+                                                    ctx.font = "30px serif";
+                                                    min = parseInt(Yakiniku_Object.timer/60);
+                                                    s =  parseInt(Yakiniku_Object.timer - 60 * min);
+                                                    if(s<10){
+                                                        var time = min + ':0' + s;    
+                                                    }
+                                                    else{
+                                                        var time = min + ':' + s;
+                                                    }
+                                                    
+                                                    ctx.fillText(time , Yakiniku_Object.x_point+20, Yakiniku_Object.y_point+30);
+                                                }, false);
+                                            }, false);       
+
+                                        }); 
                                     console.log(On_Plate);
                                 }
                                 

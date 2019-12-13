@@ -34,13 +34,17 @@ footer {
     margin-top: 10%;
 }
 
+/*
 canvas {
     background-color: #4e3131;
+
     background-image: url('./images/ami.png');
     background-size: contain;
+
     background-repeat: no-repeat;
     border: inset 20px #d4cfcf;
 }
+*/
 
 .text1 {
     color: #fff;
