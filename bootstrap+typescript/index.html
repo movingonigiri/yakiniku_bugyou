@@ -92,15 +92,15 @@
 
  
 
-                            <!--肉の厚み-->
+                            <!--肉の焼き加減-->
                             <div class="form-group m-4 dhoice">
                                 <label for="select2">
-                                    肉の厚み
+                                    肉の焼き加減
                                 </label>
                                 <select class="form-control" id="select2">
-                                    <option>普通</option>
-                                    <option>厚い</option>
-                                    <option>薄い</option>
+                                    <option>rare</option>
+                                    <option>medium</option>
+                                    <option>well-done</option>
                                 </select>
                             </div>
 
@@ -157,7 +157,7 @@
                             <div class="mb-4 ml-4">
                                 <img src="./images/tumami_tyu.png" id="ondo" width=280 height=200 alt="網の温度">
                             </div>
-                            <div class="mb-4 ml-5">
+                            <div class="temp-botton mb-4">
                                 <input type="button" value="「弱」" onclick="document.getElementById('ondo').src = 'images/tumami_jaku.png';" />
                                 <input type="button" value="「中」" onclick="document.getElementById('ondo').src = 'images/tumami_tyu.png';" />
                                 <input type="button" value="「強」" onclick="document.getElementById('ondo').src = 'images/tumami_kyo.png';" />
