@@ -169,7 +169,7 @@
                                             // 普通のfor文に直す,エラー普及のために
                                             On_Plate.forEach(function(Yakiniku_Object){
                                                time = Yakiniku_Object.Advance_timer()
-                                               if(time<0){
+                                               if(time<=0){
                                                    count--;
                                                    On_Plate.splice(idx,1);
                                                }else{
@@ -187,7 +187,7 @@
                                                         var time = min + ':0' + s;    
                                                     }
                                                     else{
-                                                        var time = min + ':' + s;
+                                                        var time = min + ':' + s;   
                                                     }
                                                     
                                                     ctx.fillText(time , Yakiniku_Object.x_point+20, Yakiniku_Object.y_point+30);
