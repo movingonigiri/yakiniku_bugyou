@@ -1,6 +1,0 @@
-C:\Users\kthr1\Desktop\yakiniku_bugyou\bootstrap+typescript\bin\TypeScriptHTMLApp1.dll.config
-C:\Users\kthr1\Desktop\yakiniku_bugyou\bootstrap+typescript\bin\TypeScriptHTMLApp1.dll
-C:\Users\kthr1\Desktop\yakiniku_bugyou\bootstrap+typescript\bin\TypeScriptHTMLApp1.pdb
-C:\Users\kthr1\Desktop\yakiniku_bugyou\bootstrap+typescript\obj\Debug\bootstrap+typescript.csprojAssemblyReference.cache
-C:\Users\kthr1\Desktop\yakiniku_bugyou\bootstrap+typescript\obj\Debug\TypeScriptHTMLApp1.dll
-C:\Users\kthr1\Desktop\yakiniku_bugyou\bootstrap+typescript\obj\Debug\TypeScriptHTMLApp1.pdb
