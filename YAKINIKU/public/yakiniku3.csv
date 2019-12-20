@@ -17,7 +17,7 @@
 牛ステーキ,400,460,520,./images/steak.png,
 キャベツ,40,40,40,./images/cabbage.png,
 トウモロコシ,180,200,220,./images/corn.png,./images/yakitomorokoshi.png
-茄子,150,170,190,/.images/nasu.png,./images/yakinasu.png
+茄子,150,170,190,./images/nasu.png,./images/yakinasu.png
 玉ねぎ,400,420,440,./images/tamanegi.png,./images/yakitamanegi.png
 ピーマン,60,60,60,./images/piman.png,./images/yakipiman.png
 かぼちゃ,150,200,220,./images/kabocha.png,./images/halloween_pumpkin.png

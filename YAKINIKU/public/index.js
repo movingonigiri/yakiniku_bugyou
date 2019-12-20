@@ -7,7 +7,8 @@ class Yakiniku{
         this.x_point = x_point;
         this.y_point = y_point;
         this.timer = timer;
-        this.rareimgpath = imgpath;
+        this.recordtime = timer;
+        this.imgpath = imgpath;
     }
 
     // timer 10s毎に処理を行う
@@ -47,19 +48,46 @@ window.onload=function () {
         ctx.drawImage(image, 0, 0, 560, 700);
     }, false);
 }
-
+                                    
 // 選択タグを押した後「焼く」ボタンを押したとき実行する関数
 function imageDraw() {
-    var value = document.getElementById('select1');
-    console.log(value.value);
-    if(value.values != "選択なし"){
-        var xpoint = 0;
-        var ypoint = 0;
-        
+    var value1 = document.getElementById('select1');
+    var value3 = document.getElementById('select3');
+    var value4 = document.getElementById('select4');
+    var value5 = document.getElementById('select5');
+    var value2 = document.getElementById('select2');
+    CreateImage(value1, value2);
+    CreateImage(value3, value2);
+    CreateImage(value4, value2);
+    CreateImage(value5, value2);
+}
+
+//CreateImage 焼くボタンを押したときに実行される関数
+function CreateImage(value, burntype){
+    if(value.values!="選択なし"){        
+    // 乱数配置用の処理
+    //xpointの値を設定する
+    var items = [1, 70, 140, 210, 280, 350, 420, 490];
+    //最大値は配列の「要素数」にする
+    var xrandom = Math.floor( Math.random() * items.length );
+    console.log( items[xrandom]);
+
+    //ypointの値を設定する
+    var items = [1, 70, 140, 210, 280, 350, 420, 490, 560, 630];
+    var a = items.length;
+    //シャフル
+    while (a) {
+        var j = Math.floor( Math.random()*a);
+        var t = items[--a];
+        items[a] = items[j];
+        items[j] = t;
+    }
+    var yrandom = Math.floor( Math.random()*items.length);
+    console.log( items[xrandom]);
+        var xpoint = xrandom;
+        var ypoint = yrandom;
         console.log(csvData[value.value]["rareimgpath"]);
-
-        On_Plate[count] = new Yakiniku(value.value, xpoint, ypoint, csvData[value.value]["medium"], imgpath = csvData[value.value]["rareimgpath"]);                     
-
+        On_Plate[count] = new Yakiniku(value.value, xpoint, ypoint, csvData[value.value][value2.value], csvData[value.value]["rareimgpath"]);
     /* ------------ 画像生成　------------ */
         var w = 60;
         var h = 60;
@@ -73,13 +101,11 @@ function imageDraw() {
             img2.src = csvData[value.value]["rareimgpath"];
             img2.addEventListener('load', function() {
                 ctx.drawImage(img2, xpoint, ypoint, w, h);
-                ctx.font = "20px serif";                                        
-                ctx.fillText(csvData[value.value]["medium"], xpoint+w/2, ypoint+h/2);
+                ctx.font = "30px serif";                                        
+                ctx.fillText(csvData[value.value][burntype.value], xpoint+w/2, ypoint+h/2);
             }, false);
         }, false);
-
     /* ------------ 画像生成　------------ */
-
         count+=1;
     }
 }
@@ -97,20 +123,25 @@ var log = function(){
     image.addEventListener('load', function() {
         ctx.clearRect(0, 0, 560, 700);
         ctx.drawImage(image, 0, 0, 560, 700);
-
             // 普通のfor文に直す,エラー普及のために
             On_Plate.forEach(function(Yakiniku_Object){
-               time = Yakiniku_Object.Advance_timer()
+               time = Yakiniku_Object.Advance_timer()                
                if(time<=0){
-                   if(Yakiniku_Object.imgpath==csvData[value.value]["rareimgpath"]){
-                       Yakiniku_Object.imgpath==csvData[value.value]["burnimgpath"]
-                   }else if(Yakiniku_Object.imgpath==csvData[value.value]["burnimgpath"]){
+                   if(Yakiniku_Object.imgpath==csvData[Yakiniku_Object.name]["rareimgpath"]){
+                       if(csvData[Yakiniku_Object.name]["burnimgpath"]==""){
+                            Yakiniku_Object.imgpath=csvData[Yakiniku_Object.name]["rareimgpath"]                            
+                       }else{
+                            Yakiniku_Object.imgpath=csvData[Yakiniku_Object.name]["burnimgpath"]                           
+                       }
+                       Yakiniku_Object.time = parseInt(Yakiniku_Object.recordtime/2);
+                   }else if(Yakiniku_Object.imgpath==csvData[Yakiniku_Object.name]["burnimgpath"]){
                         count--;
                         On_Plate.splice(idx,1);
                    }
                }else{
                    idx++;
                }
+                
                 var img2 = new Image();
                 img2.src =Yakiniku_Object.imgpath;
                 img2.addEventListener('load', function() {
@@ -119,11 +150,25 @@ var log = function(){
                     ctx.font = "30px serif";
                     min = parseInt(Yakiniku_Object.timer/60);
                     s =  parseInt(Yakiniku_Object.timer - 60 * min);
+                    var permit = "　　　";
+                    var permit_font_counter = 0;
+                    if(Yakiniku_Object.timer<=5 && Yakiniku_Object.imgpath==csvData[Yakiniku_Object.name]["rareimgpath"]){
+                        permit = "ひっくり返してください\n";
+                        permit_font_counter = 10;
+                    }else if(Yakiniku_Object.timer<=5 && Yakiniku_Object.imgpath==csvData[Yakiniku_Object.name]["burnimgpath"]){
+                        permit = "焼きあがりました。\n";
+                        permit_font_counter = 10;                        
+                    }else if(permit_font_counter <= 0){
+                        permit = "\n";
+                    }else{
+                        permit_font_counter--;                        
+                    }
+                    
                     if(s<10){
-                        var time = min + ':0' + s;    
+                        var time = permit + min + ':0' + s;    
                     }
                     else{
-                        var time = min + ':' + s;   
+                        var time = permit + min + ':' + s;   
                     }
 
                     ctx.fillText(time , Yakiniku_Object.x_point+20, Yakiniku_Object.y_point+30);
