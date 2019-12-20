@@ -18,6 +18,10 @@ footer {
     background-color: #a40101;
 }
 
+.use {
+    text-align: center;
+}
+
 .food {
     height: auto;
     width: 300px;
